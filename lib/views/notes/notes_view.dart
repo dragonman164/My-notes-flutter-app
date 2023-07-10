@@ -36,7 +36,7 @@ class _NotesViewState extends State<NotesView> {
       appBar: AppBar(title: const Text('Your Notes'),
         actions: [
           IconButton(onPressed: () {
-            Navigator.of(context).pushNamed(newNoteRoute);
+            Navigator.of(context).pushNamed(createUpdateNoteRoute);
           }, icon: const Icon(Icons.add) ),
           PopupMenuButton<MenuAction>(onSelected: (value) async{
             switch(value){
@@ -80,7 +80,14 @@ class _NotesViewState extends State<NotesView> {
                             return NotesListView(notes: allNotes,
                                 onDeleteNote: (note) async{
                                   await _notesService.deleteNode(id: note.id);
-                                },);
+                                },
+                            onTap: (note) {
+                              Navigator.of(context).pushNamed(
+                                createUpdateNoteRoute,
+                                arguments: note,
+                              );
+                            },
+                            );
                           }else{
                             return const CircularProgressIndicator();
                           }
