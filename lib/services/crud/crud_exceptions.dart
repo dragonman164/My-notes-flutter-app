@@ -9,3 +9,4 @@ class CouldNotFindUser implements Exception {}
 class CouldNotDeleteNote implements Exception{}
 class CouldNotFindNote implements Exception{}
 class CouldNoteUpdateNote implements Exception{}
+class UserShouldBeSetBeforeReadingAllNotes implements Exception{}
